@@ -1,21 +1,24 @@
 {
   "name": "haley-vue",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.4",
   "author":"TheHaleyProject",
   "description": "Contains some useful components for Vue JS",
-  "main": "./dist/haley-vue.umd.js",
+  "main": "./dist/haley-vue.umd.cjs",
   "module": "./dist/haley-vue.js",
   "types": "./dist/index.d.ts",
   "type":"module",
   "files":[
-    "dist"
+    "dist",
+    "package.json",
+    "README.md"
   ],
   "exports":{
     ".":{
-      "import" : "./dist/haley-vue.esm.js",
-      "require" : "./dist/haley-vue.js"
-    }
+      "import" : "./dist/haley-vue.js",
+      "require" : "./dist/haley-vue.umd.cjs"
+    },
+    "./style.css":"./dist/style.css"
   },
   "keywords":["vue3","haley vue","haley"],
   "scripts": {

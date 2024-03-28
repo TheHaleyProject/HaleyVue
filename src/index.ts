@@ -1,5 +1,3 @@
-import * as components from "@/components";
+import AnimatedLoader from "@/components";
 
-const result= components.default;
-
-export {result};
+export {AnimatedLoader};
