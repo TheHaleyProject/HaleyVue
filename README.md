@@ -1,9 +1,21 @@
-# Vue-Tailwind-Template | Below items are wired.
-Vue, Vite, VueRouter, Pinia,
-TypeScript, 
-Tailwind CSS, PostCSS, 
-Auto Import, 
+Haley Vue is a UI Components library for [Vue.js](https://vuejs.org/). Most of the component concepts are inspired from other opensource projects and primarily the Haley Components for WPF.
 
-1. git clone https://github.com/rmsmech/Vue-Tailwind-Template.git
-2. open the directory in VSCODE. npm install
-3. npm run dev
+### Setup Haley Vue
+
+1. Install Haley Vue.
+
+```bash
+npm install @haley/vue
+```
+
+2. Import the components:
+
+ - To register component manually:
+
+    ```js
+    import { createApp } from 'vue'
+    import { AnimatedLoader } from '@haley/vue'
+    
+    createApp(...)
+      .use(AnimatedLoader)
+    ```

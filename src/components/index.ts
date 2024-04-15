@@ -1,3 +1,3 @@
-import AnimatedLoader from "./AnimatedLoader.vue";
+import MessageDisplayer from "./MessageDisplayer.vue";
 
-export default { AnimatedLoader};
+export {MessageDisplayer};

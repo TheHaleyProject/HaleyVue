@@ -1,32 +1,44 @@
 {
-  "name": "haley-vue",
+  "name": "@haley/vue",
   "private": false,
-  "version": "0.0.4",
-  "author":"TheHaleyProject",
+  "version": "0.0.1",
+  "author": "TheHaleyProject",
+  "license": "MIT",
   "description": "Contains some useful components for Vue JS",
-  "main": "./dist/haley-vue.umd.cjs",
-  "module": "./dist/haley-vue.js",
-  "types": "./dist/index.d.ts",
-  "type":"module",
-  "files":[
+  "main": "dist/haley-vue.umd.cjs",
+  "module": "dist/haley-vue.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "files": [
     "dist",
-    "package.json",
-    "README.md"
+    "src"
   ],
-  "exports":{
-    ".":{
-      "import" : "./dist/haley-vue.js",
-      "require" : "./dist/haley-vue.umd.cjs"
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/haley-vue.js",
+      "require": "./dist/haley-vue.umd.cjs"
     },
-    "./style.css":"./dist/style.css"
+    "./dist/style.css": "./dist/style.css"
   },
-  "keywords":["vue3","haley vue","haley"],
+  "keywords": [
+    "vue3",
+    "haley vue",
+    "haley"
+  ],
+  "repository": {
+    "type": "git",
+    "url" : "https://github.com/TheHaleyProject/HaleyVue"
+  },
   "scripts": {
+    "build": "vite build",
     "dev": "vite",
-    "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
   "peerDependencies": {
+    "vue": "^3.2.47"
+  },
+  "dependencies": {
     "vue": "^3.2.47"
   },
   "devDependencies": {
@@ -40,6 +52,9 @@
     "typescript": "^4.9.5",
     "unplugin-auto-import": "^0.12.2",
     "vite": "^3.2.8",
-    "vue-tsc": "^1.8.27"
+    "vite-plugin-dts": "^3.8.3",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vue-tsc": "^1.8.27",
+    "vue": "^3.2.47"
   }
 }

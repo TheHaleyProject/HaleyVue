@@ -1,8 +1,11 @@
 import { defineConfig } from "vite";
 //Install node types before calling below import
 import { fileURLToPath } from "url";
-import path from "path";
+// import path from "path";
+import { resolve } from "node:path";
 import vue from "@vitejs/plugin-vue";
+import tsconfigPaths from "vite-tsconfig-paths";
+import dts from "vite-plugin-dts";
 
 import AutoImport from "unplugin-auto-import/vite";
 
@@ -10,6 +13,9 @@ import AutoImport from "unplugin-auto-import/vite";
 export default defineConfig({
   plugins: [
     vue(),
+    dts(),
+    tsconfigPaths(),
+    // dts({outDir:"./dist/types"}),
     AutoImport({
       //Targets (file extensions)
       include: [
@@ -35,24 +41,27 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
 
       //Method 2: using path
-      "@components": path.resolve(__dirname, "src/components"),
-      "@pages": path.resolve(__dirname, "src/@Pages"),
+      "@components": resolve(__dirname, "src/components"),
+      "@pages": resolve(__dirname, "src/@Pages"),
     },
   },
 
-  build : {
-      lib : {
-        entry: path.resolve(__dirname,"src/index.ts"),
-        name : "haley-vue",
-        fileName:"haley-vue",
+  build: {
+    // emptyOutDir: false,
+    sourcemap: true,
+    lib: {
+      name: "haley-vue",
+      entry: resolve(__dirname, "src/index.ts"),
+      // fileName:(format) => `haley-vue.${format}.js`,
+      fileName: "haley-vue",
+    },
+    rollupOptions: {
+      external: ["vue"],
+      output: {
+        globals: {
+          vue: "Vue",
+        },
       },
-      rollupOptions : {
-        external : ["vue"],
-        output : {
-          globals : {
-            vue:"Vue",
-          }
-        }
-      }
-  }
+    },
+  },
 });
