@@ -1,34 +1,37 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src/",
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "noImplicitThis": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "types":["node","vite/client"],
+    "importHelpers": true,
+    "moduleResolution": "Node",
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
-    "strict": true,
-    "jsx": "preserve",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "lib": ["ESNext", "DOM"],
+    "lib": ["ESNext", "DOM", "dom.iterable", "scripthost"],
     "skipLibCheck": true,
     "noEmit": true,
     "paths": {
       //Direct
 
       //Sub Locations
-      "@/*": ["*"],
-      "@components/*": ["components/*"],
-      "@pages/*": ["@Pages/*"],
+      "@/*": ["src/*"],
+      "@components/*": ["@/components/*"]
     }
   },
   "include": [
     "src/**/*.ts", 
-    "src/**/*.d.ts", 
     "src/**/*.tsx", 
     "src/**/*.vue",
-    "vite.config.*",
-    "auto-imports.d.ts"
+    "src/**/*.d.ts", 
+    "volar.d.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

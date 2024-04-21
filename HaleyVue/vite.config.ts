@@ -41,8 +41,7 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
 
       //Method 2: using path
-      "@components": resolve(__dirname, "src/components"),
-      "@pages": resolve(__dirname, "src/@Pages"),
+      "@components": resolve(__dirname, "src/components")
     },
   },
 
