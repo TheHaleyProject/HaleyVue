@@ -6,6 +6,7 @@
     "noImplicitThis": false,
     "noImplicitAny": false,
     "strictNullChecks": false,
+    "allowJs": true,
     "types":["node","vite/client"],
     "importHelpers": true,
     "moduleResolution": "Node",
