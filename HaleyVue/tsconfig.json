@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "noImplicitThis": false,
     "noImplicitAny": false,
@@ -11,6 +10,8 @@
     "importHelpers": true,
     "moduleResolution": "Node",
     "target": "ESNext",
+    "declaration": true,
+    "outDir": "types",
     "useDefineForClassFields": true,
     "module": "ESNext",
     "resolveJsonModule": true,
@@ -19,20 +20,25 @@
     "lib": ["ESNext", "DOM", "dom.iterable", "scripthost"],
     "skipLibCheck": true,
     "noEmit": true,
+    "strict": true,
     "paths": {
       //Direct
 
       //Sub Locations
       "@/*": ["src/*"],
-      "@components/*": ["@/components/*"]
+      "@components/*": ["@/components/*"],
+      "@lib":["lib/"],
+      "@lib/*":["lib/*"]
     }
   },
-  "include": [
+  "include": [ //Types will be created for whatever folder , we include here.
     "src/**/*.ts", 
     "src/**/*.tsx", 
     "src/**/*.vue",
     "src/**/*.d.ts", 
-    "volar.d.ts"
+    "src/components",
+    "src/*.d.ts",
+    // "lib" //Include so that library can be built
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

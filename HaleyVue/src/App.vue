@@ -1,7 +1,6 @@
 <script setup lang="ts">
-//  import {MessageDisplayer }from '@haleyjs/vue';
-// import HelloWorld from './components/HelloWorld.vue'
-import {MessageDisplayer} from "@haleyjs/vue";
+import HelloWorld from './components/HelloWorld.vue';
+import { MessageDisplayer } from '@lib/components';
 </script>
 
 <template>
@@ -13,10 +12,8 @@ import {MessageDisplayer} from "@haleyjs/vue";
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <!-- <HelloWorld msg="Vite + Vue" /> -->
- <Displayer2 msg="whaat"/>
- <MessageDisplayer msg="what the "/>
- <MessageDisplayer msg="asd2344 23423 " />
+  <HelloWorld msg="Hello wowrld"/>
+  <MessageDisplayer msg="This is from library"/>
 </template>
 
 <style scoped>
