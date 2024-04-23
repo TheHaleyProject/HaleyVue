@@ -17,6 +17,20 @@ export default defineConfig({
   ],
 
   base: "./",
+  resolve: {
+    alias: {
+      //@ infront of the actual folder name is just a preference and not mandatory.
+      //Method 1 : using fileURLToPath
+      "@": fileURLToPath(new URL("./src", import.meta.url)), //Source location.
+      "@components": fileURLToPath(
+        new URL("./src/components", import.meta.url)
+      ),
+
+      //Method 2 : Using path resolve.
+      "@libcomponents": resolve(__dirname, "./lib/components"),
+      "@lib": resolve(__dirname, "./lib"),
+    },
+  },
   build: {
     // emptyOutDir: false,
     // sourcemap: true,

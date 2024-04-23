@@ -1,6 +1,6 @@
 import { App, Plugin } from "vue";
 import "./style.css"; //Import CSS
-import * as comps from "@lib/components";
+import * as comps from "./components";
 
 const plugin: Plugin = {
   install: (app: App, options: any) => {
@@ -8,6 +8,6 @@ const plugin: Plugin = {
   },
 };
 
-export * from "@lib/components"; //Individual component export
+export * from "./components"; //Individual component export
 export { plugin as Haley }; //Overall plugin export
 // export default plugin;
