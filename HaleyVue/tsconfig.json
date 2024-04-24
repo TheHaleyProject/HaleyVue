@@ -1,17 +1,19 @@
+
+//https://stackoverflow.com/questions/42609768/typescript-error-cannot-write-file-because-it-would-overwrite-input-file
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "sourceMap": true,
+    // "sourceMap": true,
     "noImplicitThis": false,
     "noImplicitAny": false,
     "strictNullChecks": false,
-    "allowJs": true,
+    // "allowJs": true, //This doesn't work well with TS
     "types":["node","vite/client"],
     "importHelpers": true,
     "moduleResolution": "Node",
     "target": "ESNext",
     "declaration": true,
-    "outDir": "types",
+    "outDir": "dist",
     "useDefineForClassFields": true,
     "module": "ESNext",
     "resolveJsonModule": true,
@@ -19,27 +21,37 @@
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM", "dom.iterable", "scripthost"],
     "skipLibCheck": true,
-    "noEmit": true,
-    "strict": true,
+    // "noEmit": true,  //This will not emit any type from typescript
+    // "strict": true,
     "paths": {
       //Direct
 
       //Sub Locations
       "@/*": ["src/*"],
       "@components/*": ["@/components/*"],
-      "@lib":["lib"],
-      "@lib/*":["lib/*"],
-      "@libcomponents":["lib/components/*"]
+      "@lib":["./lib"],
+      "@lib/*":["./lib/*"],
+      "@libcomponents":["./lib/components/*"]
     }
   },
   "include": [ //Types will be created for whatever folder , we include here.
-    "src/**/*.ts", 
-    "src/**/*.tsx", 
-    "src/**/*.vue",
-    "src/**/*.d.ts", 
-    "src/components",
-    "src/*.d.ts",
-    "lib" //Include so that library can be built
+    // "src/**/*.ts", 
+    // "src/**/*.tsx", 
+    // "src/**/*.vue",
+    // "src/**/*.d.ts", 
+    // "src/components",
+    // "src/*.d.ts",
+    //Include so that library can be built
+    "lib", //This is enough
+    "lib/**/*.ts",
+    "lib/**/*.tsx",
+    "lib/**/*.vue" 
+  ],
+  "exclude": [
+    // "./dist/**/*", //Exclude the dist folder
+    // "./lib",
+    "node_modules",
+    "src"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -7,20 +7,28 @@
   "description": "Contains some useful components for Vue JS",
   "main": "dist/haley-vue.umd.cjs",
   "module": "dist/haley-vue.js",
-  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "type": "module",
   "files": [
     "dist", 
-    "lib",
-    "vite-env.d.ts"
+    "lib"
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/haley-vue.js",
-      "require": "./dist/haley-vue.umd.cjs"
-    },
-    "./dist/style.css": "./dist/style.css"
+        "import":{
+          "types": "./dist/index.d.ts",
+          "default": "./dist/haley-vue.js"
+        },
+          "require":{
+            "types": "./dist/index.d.ts",
+            "default": "./dist/haley-vue.umd.cjs"
+        }
+      },
+    "./dist/style.css": "./dist/style.css",
+    "./*":"./*",
+    "./volar":{
+      "types":"./volar.d.ts" 
+    }
   },
   "keywords": [
     "vue3",
@@ -33,7 +41,7 @@
     "url": "https://github.com/TheHaleyProject/HaleyVue"
   },
   "scripts": {
-    "build": "vue-tsc && vite build",
+    "build": "vue-tsc --noemit false && vite build ",
     "dev": "vite",
     "preview": "vite preview",
     "serve:src": "vite serve src"

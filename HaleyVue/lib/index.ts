@@ -10,4 +10,4 @@ const plugin: Plugin = {
 
 export * from "./components"; //Individual component export
 export { plugin as Haley }; //Overall plugin export
-// export default plugin;
+export default plugin;
