@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue';
-import { MessageDisplayer, Badge } from '@lib/components';
+import { MessageDisplayer, Badge } from "@lib/components";
 </script>
 
 <template>
@@ -13,7 +13,7 @@ import { MessageDisplayer, Badge } from '@lib/components';
     </a>
   </div>
   <HelloWorld msg="Hello wowrld"/>
-  <MessageDisplayer msg="This is from library"/>
+  <MessageDisplayer/>
   <Badge/>
 </template>
 

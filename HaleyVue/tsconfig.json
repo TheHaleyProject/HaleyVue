@@ -29,9 +29,9 @@
       //Sub Locations
       "@/*": ["src/*"],
       "@components/*": ["@/components/*"],
-      "@lib":["./lib"],
-      "@lib/*":["./lib/*"],
-      "@libcomponents":["./lib/components/*"]
+      "@lib":["lib"],
+      "@lib/*":["lib/*"],
+      "@libcomponents":["lib/components/*"]
     }
   },
   "include": [ //Types will be created for whatever folder , we include here.
