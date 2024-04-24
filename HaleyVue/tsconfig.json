@@ -45,7 +45,8 @@
     "lib", //This is enough
     "lib/**/*.ts",
     "lib/**/*.tsx",
-    "lib/**/*.vue" 
+    "lib/**/*.vue",
+    "volar.d.ts"
   ],
   "exclude": [
     // "./dist/**/*", //Exclude the dist folder

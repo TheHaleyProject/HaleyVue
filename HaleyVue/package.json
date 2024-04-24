@@ -10,7 +10,8 @@
   "typings": "dist/index.d.ts",
   "type": "module",
   "files": [
-    "dist", 
+    "dist",
+    "volar.d.ts",
     "lib"
   ],
   "exports": {
@@ -24,11 +25,7 @@
             "default": "./dist/haley-vue.umd.cjs"
         }
       },
-    "./dist/style.css": "./dist/style.css",
-    "./*":"./*",
-    "./volar":{
-      "types":"./volar.d.ts" 
-    }
+    "./styles.css": "./dist/style.css"
   },
   "keywords": [
     "vue3",

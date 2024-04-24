@@ -4,7 +4,8 @@ import * as comps from "./components";
 
 const plugin: Plugin = {
   install: (app: App, options: any) => {
-    app.component("MessageDisplayer", comps.MessageDisplayer);
+    Object.entries(comps).forEach(p=>{app.component(p[0],p[1]);});
+    // app.component("MessageDisplayer", comps.MessageDisplayer);
   },
 };
 

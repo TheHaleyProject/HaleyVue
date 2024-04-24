@@ -21,9 +21,9 @@ export default defineConfig({
     alias: {
       //@ infront of the actual folder name is just a preference and not mandatory.
       //Method 1 : using fileURLToPath
-      "@": fileURLToPath(new URL("src", import.meta.url)), //Source location.
+      "@": fileURLToPath(new URL("./src", import.meta.url)), //Source location.
       "@components": fileURLToPath(
-        new URL("src/components", import.meta.url)
+        new URL("./src/components", import.meta.url)
       ),
 
       //Method 2 : Using path resolve.
@@ -37,7 +37,7 @@ export default defineConfig({
     copyPublicDir:true, //In case we need to copy some files from public, enable this.
     minify: true,
     lib: {
-      name: "haley-vue",
+      name: "HaleyVue",
       entry: resolve(__dirname, "lib/index.ts"),
       // fileName:(format) => `haley-vue.${format}.js`,
       fileName: "haley-vue",

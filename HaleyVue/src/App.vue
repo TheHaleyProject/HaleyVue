@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue';
 import { MessageDisplayer, Badge } from "@lib/components";
+
+// import * as comps from "@lib/components";
+
+// // console.log(MessageDisplayer);
+// // console.log(Badge);
+// // Object.entries(comps).forEach(p=>{console.log(p[0]); console.log (p[1]);});
+
+// // console.log(Object.entries(comps));
+
 </script>
 
 <template>
@@ -13,7 +22,7 @@ import { MessageDisplayer, Badge } from "@lib/components";
     </a>
   </div>
   <HelloWorld msg="Hello wowrld"/>
-  <MessageDisplayer/>
+  <MessageDisplayer />
   <Badge/>
 </template>
 
