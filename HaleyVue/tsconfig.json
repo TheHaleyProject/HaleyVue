@@ -31,7 +31,7 @@
       "@components/*": ["@/components/*"],
       "@lib":["lib"],
       "@lib/*":["lib/*"],
-      "@libcomponents":["lib/components/*"]
+      "@enums/*":["lib/enums/*"]
     }
   },
   "include": [ //Types will be created for whatever folder , we include here.

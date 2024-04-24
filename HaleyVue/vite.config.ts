@@ -27,8 +27,9 @@ export default defineConfig({
       ),
 
       //Method 2 : Using path resolve.
-      "@libcomponents": resolve(__dirname, "lib/components"),
       "@lib": resolve(__dirname, "lib"),
+      "@libcomponents": resolve(__dirname, "lib/components"),
+      
     },
   },
   build: {
@@ -40,7 +41,7 @@ export default defineConfig({
       name: "HaleyVue",
       entry: resolve(__dirname, "lib/index.ts"),
       // fileName:(format) => `haley-vue.${format}.js`,
-      fileName: "haley-vue",
+      fileName: "haleyvue",
     },
     rollupOptions: {
       external: ["vue"],

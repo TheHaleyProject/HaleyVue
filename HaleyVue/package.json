@@ -1,12 +1,12 @@
 {
   "name": "@haleyjs/vue",
   "private":false,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "TheHaleyProject",
   "license": "MIT",
   "description": "Contains some useful components for Vue JS",
-  "main": "dist/haley-vue.umd.cjs",
-  "module": "dist/haley-vue.js",
+  "main": "dist/haleyvue.umd.cjs",
+  "module": "dist/haleyvue.js",
   "typings": "dist/index.d.ts",
   "type": "module",
   "files": [
@@ -18,11 +18,11 @@
     ".": {
         "import":{
           "types": "./dist/index.d.ts",
-          "default": "./dist/haley-vue.js"
+          "default": "./dist/haleyvue.js"
         },
           "require":{
             "types": "./dist/index.d.ts",
-            "default": "./dist/haley-vue.umd.cjs"
+            "default": "./dist/haleyvue.umd.cjs"
         }
       },
     "./styles.css": "./dist/style.css"
