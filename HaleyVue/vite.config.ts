@@ -21,14 +21,11 @@ export default defineConfig({
     alias: {
       //@ infront of the actual folder name is just a preference and not mandatory.
       //Method 1 : using fileURLToPath
-      "@": fileURLToPath(new URL("./src", import.meta.url)), //Source location.
-      "@components": fileURLToPath(
-        new URL("./src/components", import.meta.url)
-      ),
+      "@": fileURLToPath(new URL("./lib", import.meta.url)), //Source location.
 
       //Method 2 : Using path resolve.
-      "@lib": resolve(__dirname, "lib"),
-      "@libcomponents": resolve(__dirname, "lib/components"),
+      "@components": resolve(__dirname, "lib/components"),
+      "@enums":resolve(__dirname,"lib/enums")
       
     },
   },

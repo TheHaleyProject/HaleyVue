@@ -3,17 +3,19 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    // "sourceMap": true,
+    // "rootDir": ".",
+    "outDir": "dist",
+    // "sourceMap": false,
+
     "noImplicitThis": false,
     "noImplicitAny": false,
     "strictNullChecks": false,
-    // "allowJs": true, //This doesn't work well with TS
+    // "allowJs": false, //This doesn't work well with TS.  Having this single option 'either true or false',doesn't generate the types
     "types":["node","vite/client"],
     "importHelpers": true,
     "moduleResolution": "Node",
     "target": "ESNext",
     "declaration": true,
-    "outDir": "dist",
     "useDefineForClassFields": true,
     "module": "ESNext",
     "resolveJsonModule": true,
@@ -25,13 +27,15 @@
     // "strict": true,
     "paths": {
       //Direct
+      "@": ["./lib"],
+      "@components": ["./lib/components"],
+      "@enums":["./lib/enums"],
 
-      //Sub Locations
-      "@/*": ["src/*"],
-      "@components/*": ["@/components/*"],
-      "@lib":["lib"],
-      "@lib/*":["lib/*"],
-      "@enums/*":["lib/enums/*"]
+      // //Sub Locations
+      "@/*": ["@/*"],
+      "@components/*": ["@components/*"],
+      "@lib/*":["@lib/*"],
+      "@enums/*":["@enums/*"]
     }
   },
   "include": [ //Types will be created for whatever folder , we include here.
@@ -46,7 +50,8 @@
     "lib/**/*.ts",
     "lib/**/*.tsx",
     "lib/**/*.vue",
-    "volar.d.ts"
+    "volar.d.ts",
+    "lib/globals.ts",
   ],
   "exclude": [
     // "./dist/**/*", //Exclude the dist folder

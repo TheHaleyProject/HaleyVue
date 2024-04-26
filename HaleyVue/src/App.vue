@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
-import { MessageDisplayer, Badge } from "@lib/components";
-
+import * as comp from "../lib/components";
+import {ref} from 'vue';
+const showdialog = ref<boolean>(false);
 // import * as comps from "@lib/components";
 
 // // console.log(MessageDisplayer);
@@ -21,9 +21,14 @@ import { MessageDisplayer, Badge } from "@lib/components";
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Hello wowrld"/>
-  <MessageDisplayer />
-  <Badge/>
+  <comp.MessageDisplayer />
+  <comp.Badge/>
+  <input type="button" name="Search" class="bg-red-500 w-24 rounded-lg p-2 cursor-pointer hover:bg-red-300 active:scale-95 active:bg-sky-300" value="Search" @click="showdialog = !showdialog"/>
+  <comp.DialogBoxBase :show-dialog="showdialog" class="w-1/2" :force-close="true">
+    <template #default>
+    <p> Hello world</p>
+      </template>
+  </comp.DialogBoxBase>
 </template>
 
 <style scoped>

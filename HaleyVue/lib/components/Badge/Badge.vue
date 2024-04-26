@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { DialogLoadAnimation } from '@lib/enums';
+import { DialogLoadAnimation } from '@enums';
 
 defineProps<{animatemode?:DialogLoadAnimation}>();
 </script>
