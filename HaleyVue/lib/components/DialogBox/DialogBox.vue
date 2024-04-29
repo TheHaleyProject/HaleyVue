@@ -11,7 +11,7 @@
     >
       <div
         v-show="showDialog"
-        class="fixed inset-0 z-[99] h-screen w-screen bg-blue-800 bg-opacity-30 backdrop-blur-sm backdrop-brightness-50"
+        :class="cn('fixed inset-0 z-[99] h-screen w-screen bg-opacity-30 backdrop-blur-sm backdrop-brightness-50 bg-blue-600',backdropClass)"
       ></div>
     </Transition>
 
@@ -26,11 +26,10 @@
     >
       <div
         v-show="showDialog"
-        class="fixed left-1/2 top-1/2 z-[100] flex max-h-[60vh] max-w-[60vw] -translate-x-1/2 -translate-y-1/2 overflow-clip"
+        :class="cn('fixed left-1/2 top-1/2 z-[100] flex max-h-[60vh] max-w-[60vw] -translate-x-1/2 -translate-y-1/2 overflow-clip',dialogholderClass)"
       >
         <div
-          class="relative flex max-h-full min-h-[3.125rem] flex-col rounded-md bg-slate-50 p-2 text-red-900"
-          :style="{ width: dialogWidth + 'em' }"
+          :class="cn('relative flex max-h-full min-h-[3.125rem] flex-col rounded-md bg-slate-50 p-2 text-red-900 w-96',dialogClass)"
         >
         <div :class="cn('text-red-600 pt-6 text-2xl text-green-600 text-xl',headerClass)">Below is the message.. </div>
           Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd
@@ -112,15 +111,16 @@ import {ref,computed} from 'vue';
 interface Props {
   header?: string;
   showDialog: boolean;
-  dialogWidth?: number;
   loadAnimation?: DialogLoadAnimation;
   forceClose?: boolean;
   headerClass?:string;
+  backdropClass?:string;
+  dialogholderClass?:string;
+  dialogClass?:string;
 }
 
 const {
   loadAnimation = DialogLoadAnimation.Zoom,
-  dialogWidth = 25,
   header = "Header",
   showDialog = true,
 } = defineProps<Props>();
