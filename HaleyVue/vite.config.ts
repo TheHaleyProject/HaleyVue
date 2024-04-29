@@ -25,7 +25,8 @@ export default defineConfig({
 
       //Method 2 : Using path resolve.
       "@components": resolve(__dirname, "lib/components"),
-      "@enums":resolve(__dirname,"lib/enums")
+      "@enums":resolve(__dirname,"lib/enums"),
+      "@functions":resolve(__dirname,"lib/functions")
       
     },
   },

@@ -1,2 +1,2 @@
-import DialogBoxBase from "./DialogBoxBase.vue"
-export {DialogBoxBase};
+import DialogBox from "./DialogBox.vue";
+export {DialogBox};

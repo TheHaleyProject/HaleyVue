@@ -1,6 +1,6 @@
 {
   "name": "@haleyjs/vue",
-  "private":false,
+  "private": false,
   "version": "0.0.6",
   "author": "TheHaleyProject",
   "license": "MIT",
@@ -13,18 +13,18 @@
     "dist",
     "lib/globals.ts",
     "lib"
-  ],
+    ],
   "exports": {
     ".": {
-        "import":{
-          "types": "./dist/index.d.ts",
-          "default": "./dist/haleyvue.js"
-        },
-          "require":{
-            "types": "./dist/index.d.ts",
-            "default": "./dist/haleyvue.umd.cjs"
-        }
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/haleyvue.js"
       },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/haleyvue.umd.cjs"
+      }
+    },
     "./styles.css": "./dist/style.css"
   },
   "keywords": [
@@ -44,7 +44,9 @@
     "serve:src": "vite serve src"
   },
   "peerDependencies": {
-    "vue": "^3.4.25"
+    "vue": "^3.4.25",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",

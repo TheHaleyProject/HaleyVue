@@ -11,5 +11,7 @@ const plugin: Plugin = {
 export * from "@components"; //Individual components export
 export * from "@enums"; //Export all enums
 export { plugin as Haley }; //Overall plugin export
-export * from "./globals";
+export * from "./globals-types";
+export * from "./functions";
+export * from "../global-imports";
 export default plugin;

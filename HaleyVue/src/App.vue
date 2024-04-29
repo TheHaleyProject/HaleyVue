@@ -10,25 +10,46 @@ const showdialog = ref<boolean>(false);
 
 // // console.log(Object.entries(comps));
 
+function handleShowDialog(){
+  // if (showdialog.value){
+  //   //remove attribute from body
+  //   document.querySelector("body div#app")?.removeAttribute("haley-blur");
+  // } else{
+  //   //add attribute to the body
+  //   document.querySelector("body div#app")?.setAttribute("haley-blur","");
+  // }
+  showdialog.value = !showdialog.value
+}
+
 </script>
 
 <template>
-  <div>
+  <div >
+    <h1>Hello world.. This is a demo test</h1>
+    <h1>Hello world.. This is a demo test</h1>
+    <h1>Hello world.. This is a demo test</h1>
+    <h1>Hello world.. This is a demo test</h1>
+    <h1>Hello world.. This is a demo test</h1>
+    <h1>Hello world.. This is a demo test</h1>
+    <h1>Hello world.. This is a demo test</h1>
+    <h1>Hello world.. This is a demo test</h1>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
+      Hello there
     </a>
     <a href="https://vuejs.org/" target="_blank">
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
-  </div>
+</div>
+
   <comp.MessageDisplayer />
   <comp.Badge/>
-  <input type="button" name="Search" class="bg-red-500 w-24 rounded-lg p-2 cursor-pointer hover:bg-red-300 active:scale-95 active:bg-sky-300" value="Search" @click="showdialog = !showdialog"/>
-  <comp.DialogBoxBase :show-dialog="showdialog" class="w-1/2" :force-close="true">
-    <template #default>
-    <p> Hello world</p>
-      </template>
-  </comp.DialogBoxBase>
+  <input type="button" name="Search" class="bg-red-500 w-24 rounded-lg p-2 cursor-pointer hover:bg-red-300 active:scale-95 active:bg-sky-300" value="Search" @click="handleShowDialog()"/>
+  <comp.DialogBox :show-dialog="showdialog" header-class="text-blue-400 pt-12 pl-6 bg-purple-400" >
+    <!-- <template #default>
+    <p class="text-red-400 text-2xl"> Hello world</p>
+      </template> -->
+  </comp.DialogBox>
 </template>
 
 <style scoped>
@@ -44,4 +65,6 @@ const showdialog = ref<boolean>(false);
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
+
+
 </style>

@@ -30,12 +30,14 @@
       "@": ["./lib"],
       "@components": ["./lib/components"],
       "@enums":["./lib/enums"],
+      "@functions":["./lib/functions"],
 
       // //Sub Locations
       "@/*": ["@/*"],
       "@components/*": ["@components/*"],
       "@lib/*":["@lib/*"],
-      "@enums/*":["@enums/*"]
+      "@enums/*":["@enums/*"],
+      "@functions/*":["./lib/functions/*"]
     }
   },
   "include": [ //Types will be created for whatever folder , we include here.
@@ -50,8 +52,8 @@
     "lib/**/*.ts",
     "lib/**/*.tsx",
     "lib/**/*.vue",
-    "volar.d.ts",
-    "lib/globals.ts",
+    "global-imports.ts",
+    "lib/globals-types.ts"
   ],
   "exclude": [
     // "./dist/**/*", //Exclude the dist folder
