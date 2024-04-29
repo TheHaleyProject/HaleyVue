@@ -52,7 +52,6 @@
     "lib/**/*.ts",
     "lib/**/*.tsx",
     "lib/**/*.vue",
-    "global-imports.ts",
     "lib/globals-types.ts"
   ],
   "exclude": [
