@@ -27,7 +27,6 @@ export default defineConfig({
       "@components": resolve(__dirname, "lib/components"),
       "@enums":resolve(__dirname,"lib/enums"),
       "@functions":resolve(__dirname,"lib/functions")
-      
     },
   },
   build: {

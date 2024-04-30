@@ -2,8 +2,8 @@
   <Teleport to="body">
     <!--Back drop-->
     <Transition
-      enter-active-class="transition ease-out duration-[0.5s]"
-      leave-active-class="transition ease-out duration-[0.8s]"
+      enter-active-class="transition ease-out duration-[0.2s]"
+      leave-active-class="transition ease-out duration-[0.4s]"
       enter-from-class="opacity-0"
       enter-to-class="opacity-100"
       leave-from-class="opacity-100"
@@ -11,14 +11,19 @@
     >
       <div
         v-show="showDialog"
-        :class="cn('fixed inset-0 z-[99] h-screen w-screen bg-opacity-30 backdrop-blur-sm backdrop-brightness-50 bg-blue-600',backdropClass)"
+        :class="
+          cn(
+            'fixed inset-0 z-[99] h-screen w-screen bg-blue-600 bg-opacity-30 backdrop-blur-sm backdrop-brightness-50',
+            backdropClass,
+          )
+        "
       ></div>
     </Transition>
 
     <!--Dialog-->
     <Transition
-      enter-active-class="transition ease-in-out duration-[0.3s]"
-      leave-active-class="transition ease-in-out duration-[0.3s]"
+      enter-active-class="transition ease-in-out duration-[0.4s]"
+      leave-active-class="transition ease-in-out duration-[0.1s]"
       :enter-from-class="fromClasses[animateMode]"
       :enter-to-class="toClasses[animateMode]"
       :leave-from-class="toClasses[animateMode]"
@@ -26,77 +31,39 @@
     >
       <div
         v-show="showDialog"
-        :class="cn('fixed left-1/2 top-1/2 z-[100] flex max-h-[60vh] max-w-[60vw] -translate-x-1/2 -translate-y-1/2 overflow-clip',dialogholderClass)"
+        class="fixed left-1/2 top-1/2 z-[100] flex max-h-[60vh] max-w-[60vw] -translate-x-1/2 -translate-y-1/2 overflow-clip"
       >
         <div
-          :class="cn('relative flex max-h-full min-h-[3.125rem] flex-col rounded-md bg-slate-50 p-2 text-red-900 w-96',dialogClass)"
+          :class="
+            cn(
+              'relative flex max-h-full min-h-20  flex-col rounded-md bg-slate-50 text-gray-600',
+              dialogClass,
+            )
+          "
         >
-        <div :class="cn('text-red-600 pt-6 text-2xl text-green-600 text-xl',headerClass)">Below is the message.. </div>
-          Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd
-          asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd
-          asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa
-          asdfasd asdfas asdfa asdfasd asdXdadsadsfasdfa asdfasd asdfas asdfa
-          asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd
-          Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd
-          asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd
-          asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa
-          asdfasd asdfas asdfa asdfasd asdXdadsadsfasdfa asdfasd asdfas asdfa
-          asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd
-          Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd
-          asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd
-          asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa
-          asdfasd asdfas asdfa asdfasd asdXdadsadsfasdfa asdfasd asdfas asdfa
-          asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd
-          Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd
-          asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd
-          asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa
-          asdfasd asdfas asdfa asdfasd asdXdadsadsfasdfa asdfasd asdfas asdfa
-          asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd
-          Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd
-          asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd
-          asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa
-          asdfasd asdfas asdfa asdfasd asdXdadsadsfasdfa asdfasd asdfas asdfa
-          asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd
-          Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd
-          asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd
-          asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa
-          asdfasd asdfas asdfa asdfasd asdXdadsadsfasdfa asdfasd asdfas asdfa
-          asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd
-          Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd
-          asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd
-          asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa
-          asdfasd asdfas asdfa asdfasd asdXdadsadsfasdfa asdfasd asdfas asdfa
-          asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd
-          Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd
-          asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd
-          asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa
-          asdfasd asdfas asdfa asdfasd asdXdadsadsfasdfa asdfasd asdfas asdfa
-          asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd
-          Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd
-          asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd
-          asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa
-          asdfasd asdfas asdfa asdfasd asdXdadsadsfasdfa asdfasd asdfas asdfa
-          asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd
-          Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd
-          asdfas asdfa asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd
-          asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd Xdadsadsfasdfa
-          asdfasd asdfas asdfa asdfasd asdXdadsadsfasdfa asdfasd asdfas asdfa
-          asdfasd asd Xdadsadsfasdfa asdfasd asdfas asdfa asdfasd asd
-          <!-- <div
-          class="flex items-center justify-between border-b-[.0625rem] border-slate-400 pb-2"
-        >
-          <span class="px-2 font-bold text-white">{{ header }}</span>
-          <i
-            class="px-2 select-none text-xl text-gray-500 hover:cursor-pointer hover:text-rose-500"
-            @click="forceClose ? showDialog = false :$emit('closeDialog')"
-          > X </i>
-        </div>
-        <div class="p-2 ">
-          <slot></slot>
-        </div>
-        <div class="h-full py-2">
-          <slot name="controlBox"></slot>
-        </div> -->
+          <!-- Header -->
+          <div
+            :class="
+              cn(
+                'text-md flex items-center justify-between gap-2 rounded-t-md bg-sky-500 px-2 py-1 text-white',
+                headerClass,
+              )
+            "
+          >
+            <span>{{ header }}</span>
+            <slot name="closeIcon">
+              <SvgIcon
+                :icon-kind="SvgIconType.x"
+                class="self-end"
+                svg-class="hover:text-red-400 cursor-pointer"
+                @click="$emit('closeDialog')"
+              />
+            </slot>
+          </div>
+          <!-- Body -->
+          <div :class="cn('overflow-y-auto p-2 min-w-40', bodyClass)">
+            <slot></slot>
+          </div>
         </div>
       </div>
     </Transition>
@@ -104,36 +71,34 @@
 </template>
 
 <script setup lang="ts">
-import { DialogLoadAnimation } from "@enums";
+import { DialogLoadAnimation, SvgIconType } from "@enums";
+import { SvgIcon } from "@components";
 import { cn } from "@functions";
-import {ref,computed} from 'vue';
+import { ref, computed } from "vue";
 
 interface Props {
   header?: string;
   showDialog: boolean;
   loadAnimation?: DialogLoadAnimation;
-  forceClose?: boolean;
-  headerClass?:string;
-  backdropClass?:string;
-  dialogholderClass?:string;
-  dialogClass?:string;
+  headerClass?: string;
+  backdropClass?: string;
+  dialogClass?: string;
+  bodyClass?: string;
 }
 
-const {
-  loadAnimation = DialogLoadAnimation.Zoom,
-  header = "Header",
-  showDialog = true,
-} = defineProps<Props>();
-
 const animateMode = computed(() => {
-  return DialogLoadAnimation[loadAnimation]?.toString().toLowerCase();
+  return DialogLoadAnimation[_props.loadAnimation]?.toString().toLowerCase();
 });
 
-// const _props = withDefaults(defineProps<Props>(), {
-//   dialogWidth: 25,
-//   header: "Header",
-//   showDialog: true,
-// }); //Use latest destructuring methods.
+const _props = withDefaults(defineProps<Props>(), {
+  header: "Header",
+}); //Use latest destructuring methods.
+
+// const {
+//   loadAnimation = DialogLoadAnimation.Zoom,
+//   header = "Header",
+//   showDialog = true,
+// } = defineProps<Props>();
 
 const fromClasses = ref<any>({
   zoom: "opacity-0 scale-0",

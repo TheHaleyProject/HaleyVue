@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import * as comp from "../lib/components";
 import {ref} from 'vue';
-import { DialogBox } from "../lib/components";
+import { DialogBox,PlainButton } from "../lib/components";
+import {ButtonKind} from "@enums";
 const showdialog = ref<boolean>(false);
 // import * as comps from "@lib/components";
 
@@ -22,35 +23,31 @@ function handleShowDialog(){
   showdialog.value = !showdialog.value
 }
 
+
 </script>
 
 <template>
   <div >
-    <h1>Hello world.. This is a demo test</h1>
-    <h1>Hello world.. This is a demo test</h1>
-    <h1>Hello world.. This is a demo test</h1>
-    <h1>Hello world.. This is a demo test</h1>
-    <h1>Hello world.. This is a demo test</h1>
-    <h1>Hello world.. This is a demo test</h1>
-    <h1>Hello world.. This is a demo test</h1>
-    <h1>Hello world.. This is a demo test</h1>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-      Hello there
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <h4>Hello world.. This is a demo test</h4>
+    <h4>Hello world.. This is a demo test</h4>
+    <h4>Hello world.. This is a demo test</h4>
+    <h4>Hello world.. This is a demo test</h4>
+    <h4>Hello world.. This is a demo test</h4>
+    <h4>Hello world.. This is a demo test</h4>
+    <h4>Hello world.. This is a demo test</h4>
+    <h4>Hello world.. This is a demo test</h4>
+    <PlainButton/>
 </div>
 
-  <comp.MessageDisplayer />
   <comp.Badge/>
   <input type="button" name="Search" class="bg-red-500 w-24 rounded-lg p-2 cursor-pointer hover:bg-red-300 active:scale-95 active:bg-sky-300" value="Search" @click="handleShowDialog()"/>
-  <DialogBox :show-dialog="showdialog" header-class="bg-sky-500 text-white" dialog>
-    <!-- <template #default>
-    <p class="text-red-400 text-2xl"> Hello world</p>
-      </template> -->
-  </DialogBox>
+
+  <PlainButton @click="()=> {console.log('hello');}" :kind="ButtonKind.fancyBorder"/>
+  <!-- <DialogBox :show-dialog="showdialog" header-class="px-4 bg-transparent text-gray-600" dialog-class="rounded-2xl" body-class="w-96" @close-dialog="showdialog = !showdialog" backdrop-class="bg-blue-400 bg-opacity-30" >
+    <template #default>
+    <p class=""> sdf adsfasd asdfasdf asdfasdsdfasdfas daasdfasdfas da sdfasdf adsfasd asdfasdf asdfasdfasd asdfasdfa sdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas daasdfasdfas da sdfasdf adsfasd asdfasdf asdfasdfasd asdfasdfa sdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas daasdfasdfas da sdfasdf adsfasd asdfasdf asdfasdfasd asdfasdfa sdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas daadsfasd asdfasdf asdfasd </p>
+      </template>
+  </DialogBox> -->
 </template>
 
 <style scoped>

@@ -1,9 +1,9 @@
-
-import {Badge, MessageDisplayer} from "./components";
+export {}; 
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Badger3 :typeof Badge; //Option 1 to import
-    Displayer2: typeof MessageDisplayer;
+    // Badge :typeof Badge; //Option 1 to import
+    DialogBox: (typeof import("@components"))["DialogBox"];
+    Badge: (typeof import("@components"))["Badge"];
 }
 }
