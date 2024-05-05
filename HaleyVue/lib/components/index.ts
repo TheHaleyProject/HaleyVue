@@ -9,3 +9,4 @@ export * from "./ToggleButton";
 export * from "./Wizard";
 export * from "./SvgIcon";
 export * from "./Button";
+export * from "./Loaders";

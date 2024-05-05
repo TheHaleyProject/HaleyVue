@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import * as comp from "../lib/components";
 import {ref} from 'vue';
-import { DialogBox,PlainButton } from "../lib/components";
-import {ButtonKind} from "@enums";
+import { DialogBox,PlainButton,AnimatedLoader } from "../lib/components";
+import {ButtonKind, LoaderAnimation} from "@enums";
 const showdialog = ref<boolean>(false);
 // import * as comps from "@lib/components";
 
@@ -32,11 +32,8 @@ function handleShowDialog(){
     <h4>Hello world.. This is a demo test</h4>
     <h4>Hello world.. This is a demo test</h4>
     <h4>Hello world.. This is a demo test</h4>
-    <h4>Hello world.. This is a demo test</h4>
-    <h4>Hello world.. This is a demo test</h4>
-    <h4>Hello world.. This is a demo test</h4>
-    <h4>Hello world.. This is a demo test</h4>
     <PlainButton/>
+    <AnimatedLoader :kind="LoaderAnimation.RotatingBalls" class="w-44 h-44 bg-green-300"/>
 </div>
 
   <comp.Badge/>
