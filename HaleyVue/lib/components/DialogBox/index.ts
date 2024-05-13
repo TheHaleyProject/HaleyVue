@@ -1,2 +1,3 @@
 import DialogBox from "./DialogBox.vue";
-export {DialogBox};
+import DialogBoxConfirmation from "./DialogBoxConfirmation.vue";
+export {DialogBox,DialogBoxConfirmation as ConfirmBox};

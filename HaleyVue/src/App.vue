@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import * as comp from "../lib/components";
 import {ref} from 'vue';
-import { DialogBox,PlainButton,AnimatedLoader } from "../lib/components";
+import { DialogBox, ConfirmBox, Pagination } from "../lib/components";
 import {ButtonKind, LoaderAnimation} from "@enums";
+
 const showdialog = ref<boolean>(false);
 // import * as comps from "@lib/components";
 
@@ -39,12 +40,14 @@ function handleShowDialog(){
   <comp.Badge/>
   <input type="button" name="Search" class="bg-red-500 w-24 rounded-lg p-2 cursor-pointer hover:bg-red-300 active:scale-95 active:bg-sky-300" value="Search" @click="handleShowDialog()"/>
 
-  <PlainButton @click="()=> {console.log('hello');}" :kind="ButtonKind.fancyBorder"/>
-  <!-- <DialogBox :show-dialog="showdialog" header-class="px-4 bg-transparent text-gray-600" dialog-class="rounded-2xl" body-class="w-96" @close-dialog="showdialog = !showdialog" backdrop-class="bg-blue-400 bg-opacity-30" >
+  <!-- <PlainButton @click="()=> {console.log('hello');}" :kind="ButtonKind.fancyBorder"/> -->
+  <ConfirmBox :show-dialog="showdialog" header-class=" px-4  text-white" @close-dialog="showdialog = !showdialog" backdrop-class="bg-blue-400 bg-opacity-30" acceptBtnClass="bg-amber-600">
     <template #default>
-    <p class=""> sdf adsfasd asdfasdf asdfasdsdfasdfas daasdfasdfas da sdfasdf adsfasd asdfasdf asdfasdfasd asdfasdfa sdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas daasdfasdfas da sdfasdf adsfasd asdfasdf asdfasdfasd asdfasdfa sdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas daasdfasdfas da sdfasdf adsfasd asdfasdf asdfasdfasd asdfasdfa sdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas da sdfasdf adsfasd asdfasdf asdfasdsdfasdfas daadsfasd asdfasdf asdfasd </p>
+    <p class=""> sdf adsfasd asdfasdf asdfa</p>
       </template>
-  </DialogBox> -->
+  </ConfirmBox>
+
+  <Pagination total-items="0" itemsPerPage="55"/>
 </template>
 
 <style scoped>
