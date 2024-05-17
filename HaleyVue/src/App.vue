@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import * as comp from "../lib/components";
 import {ref} from 'vue';
-import { DialogBox, ConfirmBox, Pagination } from "../lib/components";
+import { DialogBox, ConfirmBox, Pagination, ComboBox } from "../lib/components";
 import {ButtonKind, LoaderAnimation} from "@enums";
+
+const hdata = ref<any>('22');
 
 const showdialog = ref<boolean>(false);
 // import * as comps from "@lib/components";
@@ -35,6 +37,8 @@ function handleShowDialog(){
     <h4>Hello world.. This is a demo test</h4>
     <PlainButton/>
     <AnimatedLoader :kind="LoaderAnimation.RotatingBalls" class="w-44 h-44 bg-green-300"/>
+    <ComboBox v-model="hdata" :source="[1,2,3,4,5,{id:3}]" place-holder="select a value" ><template #display="dprops">sdd - {{dprops?.selectedItem}} </template ><template #default="defProps"> {{ defProps.entry["id"]?? defProps.entry }}</template> </ComboBox>
+    The selected item is {{ hdata }}
 </div>
 
   <comp.Badge/>
@@ -47,7 +51,7 @@ function handleShowDialog(){
       </template>
   </ConfirmBox>
 
-  <Pagination total-items="0" itemsPerPage="55"/>
+  <!-- <Pagination total-items="0" itemsPerPage="55"/> -->
 </template>
 
 <style scoped>
