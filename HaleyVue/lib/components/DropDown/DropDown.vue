@@ -15,7 +15,7 @@
     >
       <slot name="display" :selectedItem="selectedItem">
         <div class="flex w-full items-center justify-between">
-          <p>{{ selectedItem?.[displayProperty] || placeHolder }}</p>
+          <p>{{ selectedItem?.[displayProperty] || selectedItem || placeHolder }}</p>
           <i class="bi-caret-down-fill text-2xl text-gray-600"></i>
         </div>
       </slot>
