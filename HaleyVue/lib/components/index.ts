@@ -10,3 +10,4 @@ export * from "./Wizard";
 export * from "./SvgIcon";
 export * from "./Button";
 export * from "./Loaders";
+export * from "./DropDown";

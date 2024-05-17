@@ -5,8 +5,9 @@ declare module '@vue/runtime-core' {
     // Badge :typeof Badge; //Option 1 to import
     DialogBox: (typeof import("./components"))["DialogBox"];
     ConfirmBox: (typeof import("./components"))["ConfirmBox"];
-    Badge: (typeof import("./components"))["Badge"];
     SvgIcon: (typeof import("./components"))["SvgIcon"];
     Pagination: (typeof import("./components"))["Pagination"];
+    AnimatedLoader:(typeof import ("./components"))["AnimatedLoader"];
+    ComboBox:(typeof import("./components"))["ComboBox"];
 }
 }
