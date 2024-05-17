@@ -49,7 +49,7 @@ function handleShowDialog(){
   <input type="button" name="Search" class="bg-red-500 w-24 rounded-lg p-2 cursor-pointer hover:bg-red-300 active:scale-95 active:bg-sky-300" value="Search" @click="handleShowDialog()"/>
 
   <!-- <PlainButton @click="()=> {console.log('hello');}" :kind="ButtonKind.fancyBorder"/> -->
-  <ConfirmBox :show-dialog="showdialog" header-class=" px-4  text-white" @close-dialog="showdialog = !showdialog" backdrop-class="bg-blue-400 bg-opacity-30" acceptBtnClass="bg-amber-600">
+  <ConfirmBox v-model="showdialog" header-class=" px-4  text-white" @accepted="showdialog = false;"  backdrop-class="bg-blue-400 bg-opacity-30" acceptBtnClass="bg-amber-600">
     <template #default>
     <p class=""> sdf adsfasd asdfasdf asdfa</p>
       </template>

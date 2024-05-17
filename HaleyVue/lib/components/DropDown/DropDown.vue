@@ -27,7 +27,6 @@
           @click="
             selectedItem = entry;
             selectedIndex = index;
-            
           "
           v-for="(entry, index) in source"
           :key="index"

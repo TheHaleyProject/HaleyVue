@@ -56,7 +56,7 @@
                 :icon-kind="SvgIconType.x"
                 class="self-end"
                 svg-class="hover:text-red-400 cursor-pointer"
-                @click="$emit('closeDialog')"
+                @click="showDialog = false; $emit('dialogClosing');"
               />
             </slot>
           </div>
@@ -78,13 +78,15 @@ import { ref, computed } from "vue";
 
 interface Props {
   header?: string;
-  showDialog: boolean;
   loadAnimation?: DialogLoadAnimation;
   headerClass?: string;
   backdropClass?: string;
   dialogClass?: string;
   bodyClass?: string;
 }
+
+const showDialog = defineModel<boolean>();
+defineEmits(["dialogClosing"]);
 
 const animateMode = computed(() => {
   return DialogLoadAnimation[_props.loadAnimation]?.toString().toLowerCase();
@@ -118,7 +120,7 @@ const toClasses = ref<any>({
   fromleft: "opacity-100 translate-x-0",
 });
 
-defineEmits(["closeDialog"]);
+
 </script>
 
 <style scoped></style>

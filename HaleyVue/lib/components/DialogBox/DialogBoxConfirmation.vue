@@ -1,5 +1,5 @@
 <template>
-  <DialogBox v-bind="$props" @closeDialog="$emit('closeDialog')">
+  <DialogBox v-bind="$props" v-model="showDialog" @dialogClosing="$emit('dialogClosing')">
     <template #default>
       <div class="flex h-full min-h-[50px] flex-col">
         <slot></slot>
@@ -14,10 +14,11 @@
               :class="
                 cn('min-w-24 content-center bg-gray-200  p-0', cancelBtnClass)
               "
-              @click.stop="$emit('closeDialog')"
+              @click.stop="showDialog = false; $emit('dialogClosing');"
             >
               Cancel
             </button>
+            <!-- For the accept button, we need to consuming component to validate, if it can close or should show some error message -->
             <button
               :class="
                 cn('min-w-24 bg-sky-700 p-0 text-slate-200', acceptBtnClass)
@@ -37,11 +38,9 @@
 import DialogBox from "./DialogBox.vue";
 import { DialogLoadAnimation, SvgIconType } from "@enums";
 import { cn } from "@functions";
-import { ref, computed } from "vue";
 
 interface Props {
   header?: string;
-  showDialog: boolean;
   loadAnimation?: DialogLoadAnimation;
   headerClass?: string;
   backdropClass?: string;
@@ -54,7 +53,8 @@ interface Props {
 
 defineProps<Props>();
 
-defineEmits(["closeDialog", "accepted"]);
+const showDialog = defineModel<boolean>();
+defineEmits(["dialogClosing", "accepted"]);
 </script>
 
 <style scoped></style>
