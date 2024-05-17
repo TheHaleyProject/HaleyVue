@@ -27,6 +27,7 @@
           @click="
             selectedItem = entry;
             selectedIndex = index;
+            
           "
           v-for="(entry, index) in source"
           :key="index"
@@ -43,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, watch } from "vue";
 import { cn } from "@functions";
 
 interface Props {
@@ -59,10 +60,17 @@ const showPopup = ref<boolean>(false);
 const selectedItem = defineModel<any>();
 // const selectedItem = ref<any>();
 const selectedIndex = ref<number>();
+const _emit =defineEmits<{(e:'selectionChanged',item:any):void}>();
 withDefaults(defineProps<Props>(), {
   displayProperty: "name",
   placeHolder: "-- select --",
 });
+
+watch(selectedItem,()=>{
+    if (selectedItem.value != null && selectedItem.value != undefined){
+        _emit('selectionChanged',selectedItem.value);
+    }
+})
 </script>
 
 <style scoped></style>

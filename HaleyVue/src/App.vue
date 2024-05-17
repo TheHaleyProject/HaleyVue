@@ -7,6 +7,10 @@ import {ButtonKind, LoaderAnimation} from "@enums";
 const hdata = ref<any>('22');
 
 const showdialog = ref<boolean>(false);
+
+function selchanged(arg:any){
+  console.log(arg);
+}
 // import * as comps from "@lib/components";
 
 // // console.log(MessageDisplayer);
@@ -37,7 +41,7 @@ function handleShowDialog(){
     <h4>Hello world.. This is a demo test</h4>
     <PlainButton/>
     <AnimatedLoader :kind="LoaderAnimation.RotatingBalls" class="w-44 h-44 bg-green-300"/>
-    <ComboBox v-model="hdata" :source="[1,2,3,4,5,{id:3}]" place-holder="select a value" ><template #display="dprops">sdd - {{dprops?.selectedItem}} </template ><template #default="defProps"> {{ defProps.entry["id"]?? defProps.entry }}</template> </ComboBox>
+    <ComboBox v-model="hdata" :source="[1,2,3,4,5,{id:3}]" place-holder="select a value" @selection-changed="selchanged"><template #display="dprops">sdd - {{dprops?.selectedItem}} </template ><template #default="defProps"> {{ defProps.entry["id"]?? defProps.entry }}</template> </ComboBox>
     The selected item is {{ hdata }}
 </div>
 
