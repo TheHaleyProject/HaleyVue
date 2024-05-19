@@ -1,7 +1,6 @@
 <template>
   <div
     @focusout="showPopup = false"
-    class="bg-blue-200"
     :class="showPopup ? 'z-[70]' : ''"
   >
     <div
