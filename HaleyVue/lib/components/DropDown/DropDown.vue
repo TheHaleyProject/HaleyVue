@@ -67,6 +67,7 @@ import { cn } from "@functions";
 interface Props {
   source?: any[];
   displayProperty?: string;
+  bindingProperty?:string;
   placeHolder?: string;
   mainClass?: string;
   dropdownItemClass?: string;
@@ -75,21 +76,30 @@ interface Props {
 
 const showPopup = ref<boolean>(false);
 const displayItem = ref<any>();
-const selectedItem = defineModel<any>();
-// const selectedItem = ref<any>();
+const [selectedItem,modifiers] = defineModel<any>({
+  set(value) {
+    if (modifiers.bind && value != undefined) {
+      // console.log(value);
+      return value[_props.bindingProperty] || undefined;
+    }
+    return value
+  }
+});
+
+// const selectedValue = defineModel<any>('value');
 const selectedIndex = ref<number>();
 const _emit = defineEmits<{ (e: "selectionChanged", item: any): void }>();
 const _props = withDefaults(defineProps<Props>(), {
   displayProperty: "name",
+  bindingProperty: "id",
   placeHolder: "-- select --",
 });
 
 watch(
   () => selectedItem.value,
   () => {
-    console.log('Selected Changed %, %', selectedItem.value,displayItem.value );
     displayItem.value = selectedItem.value;
-    console.log('Selected Changed %, %', selectedItem.value,displayItem.value );
+    // selectedValue.value = selectedItem.value[_props.bindingProperty] || selectedItem.value;
     if (selectedItem.value != null && selectedItem.value != undefined) {
       _emit("selectionChanged", selectedItem.value);
     }
@@ -97,8 +107,7 @@ watch(
 );
 
 watch(()=> selectedIndex.value,()=>{
-  console.log('Index Changed %, %',selectedItem.value, selectedIndex.value );
-  displayItem.value = _props.source[selectedIndex.value];
+  selectedItem.value = _props.source[selectedIndex.value]; //this will trigger the other watch.
 })
 
 // onBeforeMount(()=>{
@@ -107,14 +116,10 @@ watch(()=> selectedIndex.value,()=>{
 
 
 onMounted(()=>{
-  // console.log('Mounted %, %', selectedItem.value,displayItem.value );
   let input = selectedItem.value;
-  selectedItem.value = undefined;
+  selectedItem.value = undefined; //we are setting it to undefined and then setting it back to ensure that the default start up values are properly managed.
   selectedItem.value = input;
-  // selectedItem.value = selectedItem.value; // we force a change in the item.
-  // selectedItem.value = undefined; // we force a change in the item.
   displayItem.value = selectedItem.value;
-  // console.log('Mounted -Changed %, %', selectedItem.value,displayItem.value);
 });
 </script>
 
