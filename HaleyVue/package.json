@@ -1,7 +1,7 @@
 {
   "name": "@haleyjs/vue",
   "private": false,
-  "version": "0.0.17",
+  "version": "0.0.18",
   "author": "TheHaleyProject",
   "license": "MIT",
   "description": "Contains some useful components for Vue JS",
@@ -11,7 +11,8 @@
   "type": "module",
   "files": [
     "dist",
-    "lib/globals.ts"
+    "lib/globals.ts",
+    "lib"
     ],
   "exports": {
     ".": {

@@ -1,5 +1,5 @@
 <template>
-  <div @focusout="showPopup = false" class="bg-transparent" :class="showPopup ? 'z-[70]' :''">
+  <div @focusout="showPopup = false" class="bg-blue-200" :class="showPopup ? 'z-[70]' :''">
     <div
       v-show="showPopup"
       class="fixed inset-0 z-[2] h-screen w-screen bg-transparent"
@@ -13,9 +13,9 @@
       "
       @click="showPopup = !showPopup"
     >
-      <slot name="display" :selectedItem="selectedItem">
+      <slot name="display" :displayItem="displayItem">
         <div class="flex w-full items-center justify-between">
-          <p>{{ selectedItem?.[displayProperty] || selectedItem || placeHolder }}</p>
+          <p >{{ displayItem?.[displayProperty] || displayItem || placeHolder }}</p>
           <i class="bi-caret-down-fill text-2xl text-gray-600"></i>
         </div>
       </slot>
@@ -25,6 +25,7 @@
         <div
           :class="cn('flex cursor-pointer flex-col items-start rounded-md px-2 hover:bg-sky-300',selectedIndex == index ? 'bg-amber-200' : '',dropdownItemClass)"
           @click="
+            displayItem = entry;
             selectedItem = entry;
             selectedIndex = index;
           "
@@ -56,6 +57,7 @@ interface Props {
 }
 
 const showPopup = ref<boolean>(false);
+const displayItem = ref<any>();
 const selectedItem = defineModel<any>();
 // const selectedItem = ref<any>();
 const selectedIndex = ref<number>();
