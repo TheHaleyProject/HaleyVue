@@ -41,7 +41,8 @@ function handleShowDialog(){
     <h4>Hello world.. This is a demo test</h4>
     <PlainButton/>
     <AnimatedLoader :kind="LoaderAnimation.RotatingBalls" class="w-44 h-44 bg-green-300"/>
-    <ComboBox v-model="hdata" :source="[1,2,3,4,5,{id:3}]" place-holder="select a value" @selection-changed="selchanged"><template #display="dprops">sdd - {{dprops?.selectedItem}} </template ><template #default="defProps"> {{ defProps.entry["id"]?? defProps.entry }}</template> </ComboBox>
+    <ComboBox class="bg-red-300" v-model="hdata" :source="[1,2,3,4,5,{id:3}]" place-holder="select a value" @selection-changed="selchanged"><template #display="dprops">sdd - {{dprops?.selectedItem}} </template ><template #default="defProps"> {{ defProps.entry["id"]?? defProps.entry }}</template> </ComboBox>
+    <ComboBox class="bg-purple-300" :source="['a','b','c','d','e']" place-holder="select a value" > </ComboBox>
     The selected item is {{ hdata }}
 </div>
 
