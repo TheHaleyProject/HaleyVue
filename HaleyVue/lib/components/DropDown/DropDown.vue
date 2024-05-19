@@ -61,7 +61,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
+import { onBeforeMount, onMounted, ref, watch } from "vue";
 import { cn } from "@functions";
 
 interface Props {
@@ -87,9 +87,9 @@ const _props = withDefaults(defineProps<Props>(), {
 watch(
   () => selectedItem.value,
   () => {
-    // console.log('Selected Changed %, %', selectedItem.value,displayItem.value );
+    console.log('Selected Changed %, %', selectedItem.value,displayItem.value );
     displayItem.value = selectedItem.value;
-    // console.log('Selected Changed %, %', selectedItem.value,displayItem.value );
+    console.log('Selected Changed %, %', selectedItem.value,displayItem.value );
     if (selectedItem.value != null && selectedItem.value != undefined) {
       _emit("selectionChanged", selectedItem.value);
     }
@@ -97,13 +97,22 @@ watch(
 );
 
 watch(()=> selectedIndex.value,()=>{
-  // console.log('Index Changed %, %',selectedItem.value, selectedIndex.value );
+  console.log('Index Changed %, %',selectedItem.value, selectedIndex.value );
   displayItem.value = _props.source[selectedIndex.value];
 })
 
+// onBeforeMount(()=>{
+// console.log('before mount');
+// })
+
+
 onMounted(()=>{
   // console.log('Mounted %, %', selectedItem.value,displayItem.value );
-  selectedItem.value = undefined; // we force a change in the item.
+  let input = selectedItem.value;
+  selectedItem.value = undefined;
+  selectedItem.value = input;
+  // selectedItem.value = selectedItem.value; // we force a change in the item.
+  // selectedItem.value = undefined; // we force a change in the item.
   displayItem.value = selectedItem.value;
   // console.log('Mounted -Changed %, %', selectedItem.value,displayItem.value);
 });
