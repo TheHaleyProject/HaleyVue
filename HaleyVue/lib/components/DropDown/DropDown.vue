@@ -88,7 +88,7 @@ watch(
   () => selectedItem.value,
   () => {
     // console.log('Selected Changed %, %', selectedItem.value,displayItem.value );
-    // displayItem.value = selectedItem.value;
+    displayItem.value = selectedItem.value;
     // console.log('Selected Changed %, %', selectedItem.value,displayItem.value );
     if (selectedItem.value != null && selectedItem.value != undefined) {
       _emit("selectionChanged", selectedItem.value);
@@ -107,10 +107,6 @@ onMounted(()=>{
   displayItem.value = selectedItem.value;
   // console.log('Mounted -Changed %, %', selectedItem.value,displayItem.value);
 });
-
-// onMounted(()=>{
-//   console.log('Mounted %, %', selectedItem.value, displayItem.value );
-// })
 </script>
 
 <style scoped></style>
