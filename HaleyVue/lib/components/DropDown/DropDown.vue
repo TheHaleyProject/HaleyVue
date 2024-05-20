@@ -80,7 +80,7 @@ const [selectedItem,modifiers] = defineModel<any>({
   set(value) {
     if (modifiers.bind && value != undefined) {
       // console.log(value);
-      return value[_props.bindingProperty] || undefined;
+      return value[_props.bindingProperty] || value;
     }
     return value
   }
@@ -108,6 +108,7 @@ watch(
 
 watch(()=> selectedIndex.value,()=>{
   selectedItem.value = _props.source[selectedIndex.value]; //this will trigger the other watch.
+  displayItem.value =_props.source[selectedIndex.value];
 })
 
 // onBeforeMount(()=>{
@@ -117,6 +118,10 @@ watch(()=> selectedIndex.value,()=>{
 
 onMounted(()=>{
   let input = selectedItem.value;
+  if (input == undefined){
+    selectedItem.value = {};
+    input = selectedItem.value;
+  }
   selectedItem.value = undefined; //we are setting it to undefined and then setting it back to ensure that the default start up values are properly managed.
   selectedItem.value = input;
   displayItem.value = selectedItem.value;
