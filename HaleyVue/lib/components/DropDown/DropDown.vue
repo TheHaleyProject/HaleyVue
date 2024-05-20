@@ -1,11 +1,11 @@
 <template>
   <div
     @focusout="showPopup = false"
-    :class="showPopup ? 'z-[70]' : ''"
+    :class="showPopup ? 'z-[5]' : ''"
   >
     <div
       v-show="showPopup"
-      class="fixed inset-0 z-[2] h-screen w-screen bg-transparent"
+      class="fixed inset-0 h-screen w-screen bg-transparent"
       @click="showPopup = !showPopup"
     ></div>
     <div
@@ -28,7 +28,7 @@
       <div
         :class="
           cn(
-            'firefox-scrollbar absolute left-0 right-0 top-12 z-[4] h-auto max-h-56 min-h-14 overflow-y-auto rounded-md border-[1px] border-blue-200 bg-white p-2',
+            'firefox-scrollbar absolute left-0 right-0 top-12 z-[2] h-auto max-h-56 min-h-14 overflow-y-auto rounded-md border-[1px] border-blue-200 bg-white p-2',
             showPopup ? 'visible' : 'hidden',
             dropdownClass,
           )
