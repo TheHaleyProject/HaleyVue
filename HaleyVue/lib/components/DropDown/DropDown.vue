@@ -1,8 +1,5 @@
 <template>
-  <div
-    @focusout="showPopup = false"
-    :class="showPopup ? 'z-[5]' : ''"
-  >
+  <div @focusout="showPopup = false" :class="showPopup ? 'z-[5]' : ''">
     <div
       v-show="showPopup"
       class="fixed inset-0 h-screen w-screen bg-transparent"
@@ -61,13 +58,13 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, onMounted, ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { cn } from "@functions";
 
 interface Props {
   source?: any[];
   displayProperty?: string;
-  bindingProperty?:string;
+  bindingProperty?: string;
   placeHolder?: string;
   mainClass?: string;
   dropdownItemClass?: string;
@@ -76,14 +73,14 @@ interface Props {
 
 const showPopup = ref<boolean>(false);
 const displayItem = ref<any>();
-const [selectedItem,modifiers] = defineModel<any>({
+const [selectedItem, modifiers] = defineModel<any>({
   set(value) {
     if (modifiers.bind && value != undefined) {
       // console.log(value);
       return value[_props.bindingProperty] || value;
     }
-    return value
-  }
+    return value;
+  },
 });
 
 // const selectedValue = defineModel<any>('value');
@@ -106,19 +103,21 @@ watch(
   },
 );
 
-watch(()=> selectedIndex.value,()=>{
-  selectedItem.value = _props.source[selectedIndex.value]; //this will trigger the other watch.
-  displayItem.value =_props.source[selectedIndex.value];
-})
+watch(
+  () => selectedIndex.value,
+  () => {
+    selectedItem.value = _props.source[selectedIndex.value]; //this will trigger the other watch.
+    displayItem.value = _props.source[selectedIndex.value];
+  },
+);
 
 // onBeforeMount(()=>{
 // console.log('before mount');
 // })
 
-
-onMounted(()=>{
+onMounted(() => {
   let input = selectedItem.value;
-  if (input == undefined){
+  if (input == undefined) {
     selectedItem.value = {};
     input = selectedItem.value;
   }
