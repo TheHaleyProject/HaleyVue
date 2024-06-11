@@ -2,7 +2,7 @@
   <div
     class="flex-row items-center justify-between"
     :class="totalItems > 0 ? 'flex' : 'hidden'"
-    v-if="(totalPages > 1 && hideItemsSize) || !hideItemsSize"
+    v-if="(totalPages > 1 && autoHide) || !autoHide"
   >
     <nav class="order-1 flex items-center gap-3">
       <i
@@ -29,7 +29,7 @@
       <span
         class="select-none hover:text-orange-600"
         :class="
-          currentPage >= totalPages && !unCertain
+          (currentPage >= totalPages && !unCertain) || !nextPageExists
             ? 'pointer-events-none cursor-not-allowed text-slate-400'
             : 'cursor-pointer text-sky-500'
         "
@@ -97,6 +97,7 @@ interface Props {
   activePage?: number;
   hideItemsSize?: boolean;
   autoHide?: boolean;
+  currentPageCount? : number;
   unCertain?: boolean;
 }
 
@@ -128,6 +129,8 @@ const totalPages = computed<number>(() =>
       (displaySize.value <= 0 ? 1 : displaySize.value),
   ),
 );
+
+const nextPageExists = computed<boolean>(()=> _props.currentPageCount == null || _props.itemsPerPage == _props.currentPageCount );
 const activePageChangeRequest = computed<number>(() => _props.activePage);
 const gotoPage = ref<any>();
 
