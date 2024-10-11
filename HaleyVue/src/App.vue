@@ -36,15 +36,20 @@ function handleShowDialog(){
 <template>
   <div >
     <h4>Hello world.. This is a demo test</h4>
+    <iframe height="700" width="1000" src="http://10.0.66.20/api/vault/read?key=fs&tn=44563.mp4&dir=movies"></iframe>
+    <!-- <img src="http://10.0.66.20/api/vault?key=fs&tn=23232.jpg&dir=movies"/> -->
+    <!-- <iframe height="800" width="1000" src="http://10.0.66.20/api/vault/read?key=fs&tn=333.pdf&dir=movies"></iframe> -->
+    <!-- <h4>Hello world.. This is a demo test</h4>
     <h4>Hello world.. This is a demo test</h4>
     <h4>Hello world.. This is a demo test</h4>
-    <h4>Hello world.. This is a demo test</h4>
+    <img src="http://10.0.66.20/api/vault?key=fs&tn=23232.jpg&dir=movies"/> -->
     <PlainButton/>
     <AnimatedLoader :kind="LoaderAnimation.RotatingBalls" class="w-44 h-44 bg-green-300"/>
+
     <!-- <ComboBox class="bg-red-300" v-model="hdata" :source="[1,2,3,4,5,{id:3}]" place-holder="select a value" @selection-changed="selchanged"><template #display="dprops">sdd - {{dprops?.selectedItem}} </template ><template #default="defProps"> {{ defProps.entry["id"]?? defProps.entry }}</template> </ComboBox> -->
-    <ComboBox class="bg-red-300" v-model="hdata" :source="[1,2,3,4,5,{id:3}]" place-holder="select a value" @selection-changed="selchanged"><template #default="defProps"> {{ defProps.entry["id"]?? defProps.entry }}</template> </ComboBox>
+    <!-- <ComboBox class="bg-red-300" v-model="hdata" :source="[1,2,3,4,5,{id:3}]" place-holder="select a value" @selection-changed="selchanged"><template #default="defProps"> {{ defProps.entry["id"]?? defProps.entry }}</template> </ComboBox>
     <ComboBox class="bg-purple-300" :source="['a','b','c','d','e']" place-holder="select a value" > </ComboBox>
-    The selected item is {{ hdata }}
+    The selected item is {{ hdata }} -->
 </div>
 
   <comp.Badge/>
