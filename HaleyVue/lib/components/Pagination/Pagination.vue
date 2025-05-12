@@ -6,7 +6,7 @@
   >
     <nav class="order-1 flex items-center gap-3">
       <i
-        class="bi bi-skip-start-fill cursor-pointer text-3xl text-sky-500 hover:text-orange-600"
+        class="bi bi-skip-start-fill text-3xl text-sky-500 hover:text-orange-600"
         :class="
           currentPage <= 1
             ? 'pointer-events-none cursor-not-allowed text-slate-400'
@@ -51,7 +51,7 @@
       <input
         v-model="gotoPage"
         type="text"
-        class="page-input no-outline w-14 bg-white text-slate-500 focus:border-gray-400"
+        class="page-input no-outline w-14 bg-white text-slate-500 focus:border-gray-400 "
         @keypress="helpers.NumbersOnly"
         @keypress.enter.exact="handleKeyEvent"
       />
@@ -88,7 +88,7 @@
 </template>
 
 <script setup lang="ts">
-import { watch, onMounted, computed, ref } from "vue";
+import { ref, watch, computed } from "vue";
 import * as helpers from "@functions";
 
 interface Props {
@@ -97,7 +97,7 @@ interface Props {
   activePage?: number;
   hideItemsSize?: boolean;
   autoHide?: boolean;
-  currentPageCount? : number;
+  currentPageCount?: number;
   unCertain?: boolean;
 }
 
@@ -110,54 +110,53 @@ const _props = withDefaults(defineProps<Props>(), {
   unCertain: false,
 });
 
-const pageSizeOptions = [10, 20, 50, 75, 100];
-const userPageSizeValid = computed<boolean>(() => {
-  return (
-    _props.itemsPerPage != null && //User value is not null.
-    helpers.isNumeric(_props.itemsPerPage) && //User value is numeric
-    ![10, 20, 50, 75, 100].includes(_props.itemsPerPage) && //user value is not already present.
-    _props.itemsPerPage > 3 //Atleast 3 should be displayed per page.
-  );
-});
-const displaySize = ref<number>(
-  userPageSizeValid ? _props.itemsPerPage : pageSizeOptions[0],
-);
-const currentPage = ref<number>(1);
-const totalPages = computed<number>(() =>
-  Math.ceil(
-    (_props.totalItems <= 0 ? 1 : _props.totalItems) /
-      (displaySize.value <= 0 ? 1 : displaySize.value),
-  ),
-);
-
-const nextPageExists = computed<boolean>(()=> _props.currentPageCount == null || _props.itemsPerPage == _props.currentPageCount );
-const activePageChangeRequest = computed<number>(() => _props.activePage);
-const gotoPage = ref<any>();
-
 const emit = defineEmits<{
   (e: "changePage", page: number, itemsCount: number): void;
 }>();
 
-function coerceCurrentPage() {
-  //Coerce the values
-  if (currentPage.value < 1) {
-    currentPage.value = 1;
-  } else if (currentPage.value > totalPages.value && !(_props.unCertain)) {
-    currentPage.value = totalPages.value;
-  }
+const pageSizeOptions = [10, 20, 50, 75, 100];
+const displaySize = ref<number>(
+  _props.itemsPerPage && helpers.isNumeric(_props.itemsPerPage)
+    ? _props.itemsPerPage
+    : pageSizeOptions[0]
+);
 
-  //Try to emit the event.
+const currentPage = ref<number>(1);
+const gotoPage = ref<string>("");
+
+const userPageSizeValid = computed(() =>
+  _props.itemsPerPage != null &&
+  helpers.isNumeric(_props.itemsPerPage) &&
+  !pageSizeOptions.includes(_props.itemsPerPage) &&
+  _props.itemsPerPage > 3
+);
+
+const totalPages = computed(() =>
+  Math.ceil(
+    (_props.totalItems <= 0 ? 1 : _props.totalItems) /
+    (displaySize.value <= 0 ? 1 : displaySize.value)
+  )
+);
+
+const nextPageExists = computed(() =>
+  _props.currentPageCount == null ||
+  _props.itemsPerPage === _props.currentPageCount
+);
+
+function coerceCurrentPage() {
   emit("changePage", currentPage.value, displaySize.value);
 }
 
-function handleActivePage(){
-  if (currentPage.value == _props.activePage) return; //Do nothing.
-  if (helpers.isNumeric(_props.activePage)) {
-    //If numeric, then parse and change value.
-    let requested = Math.ceil(_props.activePage);
-    if (requested == currentPage.value) return; // Do not try to emit if we are processing same values.
-
-    currentPage.value = requested;
+function handleActivePage() {
+  const requested = Number(_props.activePage);
+  if (!helpers.isNumeric(requested)) return;
+  if (requested !== currentPage.value) {
+    if (requested < 1) {
+      currentPage.value = 1;
+    } else if (currentPage.value > totalPages.value && !_props.unCertain) {
+      currentPage.value = totalPages.value;
+    } else
+      currentPage.value = Math.ceil(requested);
   }
 }
 
@@ -172,45 +171,36 @@ function handleKeyEvent(e: any) {
     currentPage.value = requested;
   }
   //After you handle , clean the text.
-  gotoPage.value = "";
+  // gotoPage.value = "";
 }
 
 function displaySizeChanged() {
   coerceCurrentPage();
 }
 
-function changePage(go_forward: boolean) {
-  if (go_forward) {
-    currentPage.value++;
-  } else {
-    currentPage.value--;
-  }
+function changePage(forward: boolean) {
+  const next = currentPage.value + (forward ? 1 : -1);
+  if (next < 1 || (!_props.unCertain && next > totalPages.value)) return;
+  currentPage.value = next;
 }
 
-function goToEnd(go_right: boolean) {
-  if (go_right) {
-    currentPage.value = totalPages.value;
-  } else {
-    currentPage.value = 1;
-  }
+
+function goToEnd(forward: boolean) {
+  currentPage.value = forward ? totalPages.value : 1;
 }
 
-watch(currentPage, () => {
-  coerceCurrentPage();
-});
+watch(() => [totalPages.value, currentPage.value], ()=>{
+  coerceCurrentPage()
+}, { immediate: true });
 
-watch(totalPages, () => {
-  //Totalpages only change when we initialize or the total items count changes.
-  coerceCurrentPage();
-});
+watch(() => _props.itemsPerPage, (val) => {
+  if (helpers.isNumeric(val)) displaySize.value = val;
+}, { immediate: true });
 
-watch(activePageChangeRequest, () => {handleActivePage();});
+watch(() => _props.activePage, handleActivePage, { immediate: true });
 
-onMounted(() => {
-  coerceCurrentPage();
-  handleActivePage(); 
-});
 </script>
+
 
 <style scoped>
 .page-input {
