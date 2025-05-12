@@ -6,7 +6,7 @@ import { resolve } from "node:path";
 import vue from "@vitejs/plugin-vue";
 import tsconfigPaths from "vite-tsconfig-paths";
 import dts from "vite-plugin-dts";
-// import tailwindcss from '@tailwindcss/postcss';
+import tailwindcss from '@tailwindcss/postcss';
 import autoprefixer from 'autoprefixer';
 
 // https://vitejs.dev/config/
@@ -17,14 +17,14 @@ export default defineConfig({
     tsconfigPaths(),
     // dts({outDir:"./dist/types"}),
   ],
-  // css : {
-  //   postcss :{
-  //     plugins : [
-  //       tailwindcss(),
-  //       autoprefixer()
-  //     ]
-  //   }
-  // },
+  css : {
+    postcss :{
+      plugins : [
+        tailwindcss(),
+        autoprefixer()
+      ]
+    }
+  },
   base: "./",
   resolve: {
     alias: {
@@ -55,7 +55,7 @@ export default defineConfig({
         globals: {
           vue: "Vue",
         },
-        assetFileNames:"styles.css" //Keep original css name
+        // assetFileNames:"styles.css" //Keep original css name
       },
     },
   },

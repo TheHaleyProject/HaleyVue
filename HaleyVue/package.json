@@ -1,7 +1,7 @@
 {
   "name": "@haleyjs/vue",
   "private": false,
-  "version": "0.0.32",
+  "version": "0.0.33",
   "author": "TheHaleyProject",
   "license": "MIT",
   "description": "Contains some useful components for Vue JS",
@@ -24,7 +24,7 @@
         "default": "./dist/haleyvue.umd.cjs"
       }
     },
-    "./styles.css": "./dist/style.css"
+    "./styles.css": "./dist/haleyvue.css"
   },
   "keywords": [
     "vue3",
