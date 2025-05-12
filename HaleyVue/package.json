@@ -1,7 +1,7 @@
 {
   "name": "@haleyjs/vue",
   "private": false,
-  "version": "0.0.30",
+  "version": "0.0.32",
   "author": "TheHaleyProject",
   "license": "MIT",
   "description": "Contains some useful components for Vue JS",
@@ -12,7 +12,7 @@
   "files": [
     "dist",
     "lib/globals.ts"
-    ],
+  ],
   "exports": {
     ".": {
       "import": {
@@ -46,22 +46,23 @@
     "vue": "^3.4.25"
   },
   "devDependencies": {
-    "@types/node": "^20.12.7",
-    "@vitejs/plugin-vue": "^5.0.4",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
-    "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.14",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.10",
-    "vite-plugin-dts": "^3.9.0",
-    "vite-tsconfig-paths": "^4.3.2",
-    "vue": "^3.4.25",
-    "vue-tsc": "^2.0.14"
+    "@tailwindcss/postcss": "^4.1.6",
+    "@types/node": "^22.15.17",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4.1.6",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vite-plugin-dts": "^4.5.3",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vue": "^3.5.13",
+    "vue-tsc": "^2.2.10"
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.3.0"
+    "tailwind-merge": "^3.3.0"
   }
 }

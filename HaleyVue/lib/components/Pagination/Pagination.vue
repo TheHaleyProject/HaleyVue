@@ -150,6 +150,17 @@ function coerceCurrentPage() {
   emit("changePage", currentPage.value, displaySize.value);
 }
 
+function handleActivePage(){
+  if (currentPage.value == _props.activePage) return; //Do nothing.
+  if (helpers.isNumeric(_props.activePage)) {
+    //If numeric, then parse and change value.
+    let requested = Math.ceil(_props.activePage);
+    if (requested == currentPage.value) return; // Do not try to emit if we are processing same values.
+
+    currentPage.value = requested;
+  }
+}
+
 function handleKeyEvent(e: any) {
   // if (!(e?.key === "Enter" || e?.keyCode == 13)) return; //we are direclty handling with vue provider.
   //Change page and then request change
@@ -193,18 +204,11 @@ watch(totalPages, () => {
   coerceCurrentPage();
 });
 
-watch(activePageChangeRequest, () => {
-  if (helpers.isNumeric(_props.activePage)) {
-    //If numeric, then parse and change value.
-    let requested = Math.ceil(_props.activePage);
-    if (requested == currentPage.value) return; // Do not try to emit if we are processing same values.
-
-    currentPage.value = requested;
-  }
-});
+watch(activePageChangeRequest, () => {handleActivePage();});
 
 onMounted(() => {
   coerceCurrentPage();
+  handleActivePage(); 
 });
 </script>
 
